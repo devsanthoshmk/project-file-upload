@@ -1,14 +1,15 @@
-from PIL import Image
-from transformers import ViTFeatureExtractor, ViTForImageClassification
-import torch
-import torchvision.transforms as transforms
-import io
+
 
 from flask import Flask, render_template, request
 import base64
 import os
 
 def preprocess_and_classify(image_bytes):
+    from PIL import Image
+    from transformers import ViTFeatureExtractor, ViTForImageClassification
+    import torch
+    import torchvision.transforms as transforms
+    import io
     # Load the feature extractor and model (pre-trained model name may vary)
     feature_extractor = ViTFeatureExtractor.from_pretrained("dima806/deepfake_vs_real_image_detection")
     model = ViTForImageClassification.from_pretrained("dima806/deepfake_vs_real_image_detection")
